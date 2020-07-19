@@ -1,0 +1,5 @@
+
+<!--pages/CMReader-WebView.wxml-->
+<web-view src="{{url}}">
+</web-view> 
+

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {},
+  "pageOrientation": "landscape",
+  "resizable":true,
+  "backgroundTextStyle": "#000",
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black"
+
+}
