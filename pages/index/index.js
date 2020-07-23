@@ -31,6 +31,7 @@ create(store, {
     errMsg:'',
     cardCur: 0,
     swiperList: [],
+    pageLoading: true
 },
   //事件处理函数
   bindViewTap:  function () {
@@ -72,7 +73,8 @@ create(store, {
         this.setData({
           modelList,
           swiperList,
-          currentPage:currentPage+1,
+          pageLoading:false,
+          currentPage: res.next,
           loadEnd:res.next === -1,
           loading:false,
           triggered:false,
@@ -85,13 +87,17 @@ create(store, {
     }
   
   },
-  onRefresh(){
+  onRefresh(pageLoading = false){
     this.setData({
       loadEnd:false,
       loading:false,
+      pageLoading,
       currentPage:0,
       modelList:[]
     },this.getPageData)
+  },
+  pullDownRefresh(){
+    this.onRefresh(true)
   },
   loadMore(){
     this.getPageData();

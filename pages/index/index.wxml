@@ -1,27 +1,32 @@
-
+<cu-custom bgColor="bg-blue-gradual" class="animation-scale-down" wx:if="{{modalName!=='viewModal'}}">
+    <view  slot="left"  class="action" bindtap="showModal" data-target="viewModal">
+    <text class="cuIcon-cascades"></text>
+    主菜单
+  </view>
+</cu-custom>	
 <scroll-view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}" 
+style="padding-top:{{modalName!=='viewModal'?CustomBar:0}}px"
 	refresher-enabled="{{true}}"
   refresher-threshold="{{100}}"
 	lower-threshold="{{100}}"
   refresher-default-style="white"
   refresher-triggered="{{triggered}}"
-  bindrefresherrefresh="onRefresh"
+  bindrefresherrefresh="pullDownRefresh"
 	bindscrolltolower="loadMore"
   bindrefresherabort="onAbort">
-  <cu-custom bgColor="bg-blue-gradual" >
+  <cu-custom bgColor="bg-blue-gradual"  wx:if="{{modalName==='viewModal'}}">
      <view  slot="left"  class="action" bindtap="showModal" data-target="viewModal">
       <text class="cuIcon-cascades"></text>
       主菜单
     </view>
   </cu-custom>			
-
-<swiper wx:if="{{swiperList.length}}" class="card-swiper"  circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<!-- <swiper wx:if="{{swiperList.length}}" class="card-swiper"  circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}} ">
     <view class="swiper-item shadow" data-id="{{index}}" bindtap="goCMWeb">
       <image src="{{item.img}}" mode="aspectFill" ></image>
     </view>
   </swiper-item>
-</swiper>
+</swiper> -->
 
 <!-- tab -->
 <scroll-view scroll-x class="bg-white  nav homeTabs text-center" >
@@ -90,3 +95,7 @@
 <view class="text-center margin-top">
   <text class="text-grey text-xl">{{motto}}</text>
 </view> -->
+
+
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{pageLoading}}" />
